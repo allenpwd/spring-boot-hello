@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf实例</title>
+</head>
+<body>
+<div>[[${html}]]  [(${html})]</div>
+<div th:text="${html}"></div>
+<div th:utext="${html}"></div>
+<div th:text="|name:${user.name}  role:${user.roles[0]}|"></div>
+<hr/>
+*{}
+<ul th:object="${user}">
+    <!--<li th:text="*{name}"></li>-->
+    <li th:text="${user.roles[0]}"></li>
+</ul>
+<hr/>
+内置对象
+<div th:text="${param.size()}">param.size()</div>
+<div th:text="${param.text}">param.text</div>
+<br/>
+<div th:each="role:${user.roles}">
+    <span th:text="${role.name}"></span>
+</div>
+</body>
+</html>
