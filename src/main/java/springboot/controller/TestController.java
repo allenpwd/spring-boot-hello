@@ -40,6 +40,12 @@ public class TestController {
         return map;
     }
 
+    /**
+     * 测试thymeleaf模板引擎的语法
+     * @param req
+     * @param resp
+     * @return
+     */
     @RequestMapping("/thymeleaf")
     public String index(HttpServletRequest req, HttpServletResponse resp) {
         List<User> list = userRepository.findAll();

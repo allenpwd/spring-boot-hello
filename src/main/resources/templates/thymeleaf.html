@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>[[${html}]]  [(${html})]</div>
-<div th:text="${html}"></div>
+<b>th:text</b><span th:text="${html}"></span>
 <div th:utext="${html}"></div>
 <div th:text="|name:${user.name}  role:${user.roles[0]}|"></div>
 <hr/>
@@ -23,5 +23,12 @@
 <div th:each="role:${user.roles}">
     <span th:text="${role.name}"></span>
 </div>
+<table cellpadding="10" border="1" cellspacing="0">
+    <tr>
+        <td>th:text</td>
+        <td>会转</td>
+        <td><span th:text="${html}"></span></td>
+    </tr>
+</table>
 </body>
 </html>
