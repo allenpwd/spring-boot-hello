@@ -10,6 +10,7 @@ import springboot.listener.MyListener;
 import springboot.servlet.MyServlet;
 
 import java.util.Arrays;
+import java.util.EventListener;
 
 @Configuration
 public class MyServerConfig {
@@ -30,9 +31,22 @@ public class MyServerConfig {
         return registrationBean;
     }
 
+    /**
+     * ServletListenerRegistrationBean能看到支持注册的listener
+ *          Set<Class<?>> types = new HashSet<>();
+     * 		types.add(ServletContextAttributeListener.class);
+     * 		types.add(ServletRequestListener.class);
+     * 		types.add(ServletRequestAttributeListener.class);
+     * 		types.add(HttpSessionAttributeListener.class);
+     * 		types.add(HttpSessionListener.class);
+     * 		types.add(ServletContextListener.class);
+     * 		SUPPORTED_TYPES = Collections.unmodifiableSet(types);
+     *
+     * @return
+     */
     @Bean
     public ServletListenerRegistrationBean myListener(){
-        ServletListenerRegistrationBean<MyListener> registrationBean = new ServletListenerRegistrationBean<>(new MyListener());
+        ServletListenerRegistrationBean<EventListener> registrationBean = new ServletListenerRegistrationBean<>(new MyListener());
         return registrationBean;
     }
 

@@ -5,13 +5,14 @@ import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerF
 import org.springframework.stereotype.Component;
 
 /**
- * @author pwd自定义server配置
+ * 自定义 内嵌得servlet容器的配置
+ * @author pwd
  * @create 2019-02-07 22:14
  **/
 @Component
 public class MyWebServerFactoryCustomizer implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {
     @Override
     public void customize(ConfigurableServletWebServerFactory factory) {
-        factory.setPort(8080);
+        factory.setDisplayName("重新定个名你想乍地");
     }
 }

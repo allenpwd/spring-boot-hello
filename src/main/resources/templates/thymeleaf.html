@@ -5,29 +5,58 @@
     <title>thymeleaf实例</title>
 </head>
 <body>
-<div>[[${html}]]  [(${html})]</div>
-<b>th:text</b><span th:text="${html}"></span>
-<div th:utext="${html}"></div>
 <div th:text="|name:${user.name}  role:${user.roles[0]}|"></div>
 <hr/>
-*{}
+<h1>*{}</h1>
 <ul th:object="${user}">
-    <!--<li th:text="*{name}"></li>-->
-    <li th:text="${user.roles[0]}"></li>
+    *{name}:<li th:text="*{name}"></li>
+    ${user.name}<li th:text="${user.name}"></li>
 </ul>
 <hr/>
-内置对象
-<div th:text="${param.size()}">param.size()</div>
-<div th:text="${param.text}">param.text</div>
-<br/>
-<div th:each="role:${user.roles}">
-    <span th:text="${role.name}"></span>
-</div>
 <table cellpadding="10" border="1" cellspacing="0">
     <tr>
         <td>th:text</td>
-        <td>会转</td>
-        <td><span th:text="${html}"></span></td>
+        <td>会html转码</td>
+        <td>写法一：<span th:text="${html}"></span>写法二：<span>[[${html}]]</span></td>
+    </tr>
+    <tr>
+        <td>th:utext</td>
+        <td>不会html转码</td>
+        <td>写法一：<span th:utext="${html}"></span>写法二：<span>[(${html})]</span></td>
+    </tr>
+    <tr>
+        <td>th:each</td>
+        <td>遍历</td>
+        <td>
+            <div th:each="role:${user.roles}">
+                <span th:text="${role.name}"></span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>内置对象：param</td>
+        <td>请求参数</td>
+        <td>param.size()=<span th:text="${param.size()}"></span>&nbsp;&nbsp;param.name=<span th:text="${param.name}"></span></td>
+    </tr>
+    <tr>
+        <td>内置对象：locale</td>
+        <td></td>
+        <td th:text="${#locale}"></td>
+    </tr>
+    <tr>
+        <td>内置对象：request</td>
+        <td></td>
+        <td th:text="${#request.getAttribute('user')}"></td>
+    </tr>
+    <tr>
+        <td>内置对象：servletContext</td>
+        <td></td>
+        <td th:text="${#servletContext.getServletContextName()}"></td>
+    </tr>
+    <tr>
+        <td>内置对象：ctx</td>
+        <td></td>
+        <td th:text="${#ctx}"></td>
     </tr>
 </table>
 </body>

@@ -61,7 +61,7 @@ public class MyConfig {
 
     @Bean
     /**
-     * 自定义国际化处理器
+     * 自定义区域信息对象处理器
      */
     public LocaleResolver localeResolver(){
         return new MyLocaleResolver();
